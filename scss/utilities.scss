@@ -1,0 +1,460 @@
+// Utilities
+@use "sass:map";
+@use "sass:meta";
+@use "sass:selector";
+@use "sass:list";
+
+$spacer: 2px;
+$spacers: (
+  0:  $spacer * 0,
+  1:  $spacer * 0.5,
+  2:  $spacer,
+  3:  $spacer * 2 - 1,
+  4:  $spacer * 2,
+  5:  $spacer * 2.5,
+  6:  $spacer * 3,
+  7:  $spacer * 3 + 1,
+  8:  $spacer * 4,
+  9:  $spacer * 4.5,
+  10: $spacer * 5,
+  11: $spacer * 5.5,
+  12: $spacer * 6,
+  13: $spacer * 6.5,
+  14: $spacer * 7,
+  15: $spacer * 7.5,
+  16: $spacer * 8,
+  17: $spacer * 8.5,
+  18: $spacer * 9,
+  19: $spacer * 9.5,
+  20: $spacer * 10,
+  21: $spacer * 10.5,
+  22: $spacer * 11,
+  23: $spacer * 11.5,
+  24: $spacer * 12,
+  25: $spacer * 12.5,
+  26: $spacer * 13,
+  27: $spacer * 13.5,
+  28: $spacer * 14,
+  29: $spacer * 14.5,
+  30: $spacer * 15,
+  31: $spacer * 15.5,
+  32: $spacer * 16,
+  33: $spacer * 16.5,
+  34: $spacer * 17,
+  35: $spacer * 17.5,
+  36: $spacer * 18,
+  37: $spacer * 18.5,
+  38: $spacer * 19,
+  39: $spacer * 19.5,
+  40: $spacer * 20,
+  50: $spacer * 25,
+  54: 54px,
+  78: 78px,
+  120: 120px,
+);
+$infix: "";
+$enable-important-utilities: true;
+$position-values: (
+  0: 0,
+  50: 50%,
+  100: 100%
+) !default;
+$utilities: () !default;
+$utilities: map.merge(
+    (
+      "align": (
+        property: vertical-align,
+        class: align,
+        values: baseline top middle bottom text-bottom text-top
+      ),
+      "align-content": (
+        property: align-content,
+        class: align-content,
+        values: (
+          start: flex-start,
+          end: flex-end,
+          center: center,
+          between: space-between,
+          around: space-around,
+          stretch: stretch
+        )
+      ),
+      "align-items": (
+        property: align-items,
+        class: align-items,
+        values: (
+          start: flex-start,
+          end: flex-end,
+          center: center,
+          baseline: baseline,
+          stretch: stretch
+        )
+      ),
+      "align-self": (
+        property: align-self,
+        class: align-self,
+        values: (
+          auto: auto,
+          start: flex-start,
+          end: flex-end,
+          center: center,
+          baseline: baseline,
+          stretch: stretch
+        )
+      ),
+      "bottom": (
+        property: bottom,
+        values: $position-values
+      ),
+      "display": (
+        property: display,
+        class: d,
+        values: inline inline-block block flex inline-flex none
+      ),
+      "end": (
+        property: right,
+        class: end,
+        values: $position-values
+      ),
+      "flex": (
+        responsive: true,
+        property: flex,
+        values: (fill: 1 1 auto)
+      ),
+      "flex-direction": (
+        property: flex-direction,
+        class: flex,
+        values: row column row-reverse column-reverse
+      ),
+      "flex-grow": (
+        property: flex-grow,
+        class: flex,
+        values: (
+          grow-0: 0,
+          grow-1: 1
+        )
+      ),
+      "flex-shrink": (
+        property: flex-shrink,
+        class: flex,
+        values: (
+          shrink-0: 0,
+          shrink-1: 1
+        )
+      ),
+      "flex-wrap": (
+        property: flex-wrap,
+        class: flex,
+        values: wrap nowrap wrap-reverse
+      ),
+      "height": (
+        property: height,
+        class: h,
+        values: map-merge(
+            (
+              100: 100%,
+              auto: auto
+            ),
+            $spacers
+        )
+      ),
+      "justify-content": (
+        property: justify-content,
+        class: justify,
+        values: (
+          start: flex-start,
+          end: flex-end,
+          center: center,
+          between: space-between,
+          around: space-around,
+          evenly: space-evenly
+        )
+      ),
+      "margin": (
+        responsive: true,
+        property: margin,
+        class: m,
+        values: map-merge($spacers, (auto: auto))
+      ),
+      "margin-bottom": (
+        responsive: true,
+        property: margin-bottom,
+        class: mb,
+        values: map-merge($spacers, (auto: auto))
+      ),
+      "margin-end": (
+        responsive: true,
+        property: margin-right,
+        class: me,
+        values: map-merge($spacers, (auto: auto))
+      ),
+      "margin-start": (
+        responsive: true,
+        property: margin-left,
+        class: ms,
+        values: map-merge($spacers, (auto: auto))
+      ),
+      "margin-top": (
+        responsive: true,
+        property: margin-top,
+        class: mt,
+        values: map-merge($spacers, (auto: auto))
+      ),
+      "margin-x": (
+        responsive: true,
+        property: margin-right margin-left,
+        class: mx,
+        values: map-merge($spacers, (auto: auto))
+      ),
+      "margin-y": (
+        responsive: true,
+        property: margin-top margin-bottom,
+        class: my,
+        values: map-merge($spacers, (auto: auto))
+      ),
+      "max-height": (
+        property: max-height,
+        class: mh,
+        values: (100: 100%)
+      ),
+      "max-width": (
+        property: max-width,
+        class: mw,
+        values: (100: 100%)
+      ),
+      "overflow": (
+        property: overflow,
+        class: overflow,
+        values: auto hidden visible scroll
+      ),
+      "overflow-x": (
+        property: overflow-x,
+        class: overflow-x,
+        values: auto hidden visible scroll
+      ),
+      "overflow-y": (
+        property: overflow-y,
+        class: overflow-y,
+        values: auto hidden visible scroll
+      ),
+      "padding": (
+        responsive: true,
+        property: padding,
+        class: p,
+        values: $spacers
+      ),
+      "padding-bottom": (
+        responsive: true,
+        property: padding-bottom,
+        class: pb,
+        values: $spacers
+      ),
+      "padding-end": (
+        responsive: true,
+        property: padding-right,
+        class: pe,
+        values: $spacers
+      ),
+      "padding-start": (
+        responsive: true,
+        property: padding-left,
+        class: ps,
+        values: $spacers
+      ),
+      "padding-top": (
+        responsive: true,
+        property: padding-top,
+        class: pt,
+        values: $spacers
+      ),
+      "padding-x": (
+        responsive: true,
+        property: padding-right padding-left,
+        class: px,
+        values: $spacers
+      ),
+      "padding-y": (
+        responsive: true,
+        property: padding-top padding-bottom,
+        class: py,
+        values: $spacers
+      ),
+      "position": (
+        property: position,
+        values: static relative absolute fixed sticky
+      ),
+      "start": (
+        property: left,
+        class: start,
+        values: $position-values
+      ),
+      "top": (
+        property: top,
+        values: $position-values
+      ),
+      "visibility": (
+        property: visibility,
+        class: null,
+        values: (
+          visible: visible,
+          invisible: hidden,
+        )
+      ),
+      "width": (
+        property: width,
+        class: w,
+        values: (
+          25: 25%,
+          50: 50%,
+          75: 75%,
+          100: 100%,
+          auto: auto
+        )
+      ),
+      "word-wrap": (
+        property: word-wrap word-break,
+        class: text,
+        values: (break: break-word),
+        rtl: false
+      )
+    ),
+    $utilities
+);
+
+@mixin generate-utility-classes($utility-map) {
+  @each $utility, $config in $utility-map {
+    $class-prefix: map.get($config, class, $utility);
+    $property: map.get($config, property);
+    $values: map.get($config, values);
+
+    @if meta.type-of($values) == 'list' {
+      @each $value in $values {
+        .#{$class-prefix}-#{$value} {
+          #{$property}: #{$value};
+        }
+      }
+    } @else if meta.type-of($values) == 'map' {
+      @each $key, $value in $values {
+        .#{$class-prefix}-#{$key} {
+          #{$property}: #{$value};
+        }
+      }
+    }
+  }
+}
+
+// Utility generator
+// Used to generate utilities & print utilities
+@mixin generate-utility($utility, $infix: "", $is-rfs-media-query: false) {
+  $values: map.get($utility, values);
+
+  // If the values are a list or string, convert it into a map
+  @if meta.type-of($values) == "string" or meta.type-of(list.nth($values, 1)) != "list" {
+    $values: list.zip($values, $values);
+  }
+
+  @each $key, $value in $values {
+    $properties: map.get($utility, property);
+
+    // Multiple properties are possible, for example with vertical or horizontal margins or paddings
+    @if meta.type-of($properties) == "string" {
+      $properties: selector.append($properties);
+    }
+
+    // Use custom class if present
+    $property-class: if(map.has-key($utility, class), map.get($utility, class), list.nth($properties, 1));
+    $property-class: if($property-class == null, "", $property-class);
+
+    // Use custom CSS variable name if present, otherwise default to `class`
+    $css-variable-name: if(map.has-key($utility, css-variable-name), map.get($utility, css-variable-name), map.get($utility, class));
+
+    // State params to generate pseudo-classes
+    $state: if(map.has-key($utility, state), map.get($utility, state), ());
+
+    $infix: if($property-class == "" and str-slice($infix, 1, 1) == "-", str-slice($infix, 2), $infix);
+
+    // Don't prefix if value key is null (e.g. with shadow class)
+    $property-class-modifier: if($key, if($property-class == "" and $infix == "", "", "-") + $key, "");
+
+    @if map.get($utility, rfs) {
+      // Inside the media query
+      @if $is-rfs-media-query {
+        $val: rfs-value($value);
+
+        // Do not render anything if fluid and non fluid values are the same
+        $value: if($val == rfs-fluid-value($value), null, $val);
+      }
+      @else {
+        $value: rfs-fluid-value($value);
+      }
+    }
+
+    $is-css-var: map.get($utility, css-var);
+    $is-local-vars: map.get($utility, local-vars);
+    $is-rtl: map.get($utility, rtl);
+
+    @if $value != null {
+      @if $is-rtl == false {
+        /* rtl:begin:remove */
+      }
+
+      @if $is-css-var {
+        .#{$property-class + $infix + $property-class-modifier} {
+          --#{$prefix}#{$css-variable-name}: #{$value};
+        }
+
+        @each $pseudo in $state {
+          .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
+            --#{$prefix}#{$css-variable-name}: #{$value};
+          }
+        }
+      } @else {
+        .#{$property-class + $infix + $property-class-modifier} {
+          @each $property in $properties {
+            @if $is-local-vars {
+              @each $local-var, $variable in $is-local-vars {
+                --#{$prefix}#{$local-var}: #{$variable};
+              }
+            }
+            #{$property}: $value if($enable-important-utilities, !important, null);
+          }
+        }
+
+        @each $pseudo in $state {
+          .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
+            @each $property in $properties {
+              @if $is-local-vars {
+                @each $local-var, $variable in $is-local-vars {
+                  --#{$prefix}#{$local-var}: #{$variable};
+                }
+              }
+              #{$property}: $value if($enable-important-utilities, !important, null);
+            }
+          }
+        }
+      }
+
+      @if $is-rtl == false {
+        /* rtl:end:remove */
+      }
+    }
+  }
+}
+
+// Loop over each utility property
+@each $key, $utility in $utilities {
+  // The utility can be disabled with `false`, thus check if the utility is a map first
+  // Only proceed if responsive media queries are enabled or if it's the base media query
+  @if meta.type-of($utility) == "map" and (map.get($utility, responsive) or $infix == "") {
+    @include generate-utility($utility, $infix);
+  }
+}
+
+// Loop over each utility property
+@each $key, $utility in $utilities {
+  // The utility can be disabled with `false`, thus check if the utility is a map first
+  // Only proceed if responsive media queries are enabled or if it's the base media query
+  @if meta.type-of($utility) == "map" and map.get($utility, rfs) and (map.get($utility, responsive) or $infix == "") {
+    @include generate-utility($utility, $infix, true);
+  }
+}

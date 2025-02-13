@@ -1,0 +1,16 @@
+{
+  "title": "Edit card",
+  "button": {
+    "back": "Back"
+  },
+  "formGroup": {
+    "name": {
+      "label": "Name",
+      "placeholder": "Enter some name..."
+    },
+    "description": {
+      "label": "Description",
+      "placeholder": "Enter some description..."
+    }
+  }
+}

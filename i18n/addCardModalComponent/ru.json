@@ -1,0 +1,9 @@
+{
+  "formGroup": {
+    "name": {
+      "label": "Name",
+      "placeholder": "Enter some name..."
+    },
+    "button": "Complate"
+  }
+}
