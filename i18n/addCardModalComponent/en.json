@@ -1,9 +1,8 @@
 {
   "formGroup": {
     "name": {
-      "label": "Name",
-      "placeholder": "Enter some name..."
+      "placeholder": "Card name"
     },
-    "button": "Complate"
+    "button": "Add"
   }
 }
