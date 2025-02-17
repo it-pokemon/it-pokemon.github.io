@@ -1,8 +1,5 @@
 {
   "formGroup": {
-    "name": {
-      "placeholder": "Card name"
-    },
     "button": "Add"
   }
 }
