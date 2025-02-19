@@ -1,7 +1,8 @@
 {
-  "title": "Cashbacks",
+  "title": "Кэшбэк",
   "zeroData": {
-    "title": "Let's Get Started!",
-    "description": "Your card list is empty for now. Click the button below to begin adding cards!"
-  }
+    "title": "Ваш кэшбэк",
+    "description": "AI-Ассистент будет подсказывать вам, какой кэшбэк лучше использовать, чтобы получить максимальную выгоду"
+  },
+  "button": "Добавить"
 }

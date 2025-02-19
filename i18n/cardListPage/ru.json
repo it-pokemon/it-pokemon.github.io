@@ -1,10 +1,10 @@
 {
-  "title": "Cards",
+  "title": "Карты",
   "zeroData": {
-    "title": "Let's Get Started!",
-    "description": "Your card list is empty for now. Click the button below to begin adding cards!"
+    "title": "Ваши карты",
+    "description": "AI-Ассистент будет подсказывать вам, с какой карты лучше произвести покупку, чтобы получить максимальный кэшбек"
   },
   "button": {
-    "addCard": "Add card"
+    "addCard": "Добавить"
   }
 }

@@ -1,10 +1,10 @@
 {
   "title": "Cards",
   "zeroData": {
-    "title": "Let's Get Started!",
-    "description": "Your card list is empty for now. Click the button below to begin adding cards!"
+    "title": "Your Cards",
+    "description": "The AI Assistant will suggest which card to use for purchases to maximize your cashback"
   },
   "button": {
-    "addCard": "Add card"
+    "addCard": "Add"
   }
 }

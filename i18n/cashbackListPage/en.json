@@ -1,7 +1,8 @@
 {
-  "title": "Cashbacks",
+  "title": "Cashback",
   "zeroData": {
-    "title": "Let's Get Started!",
-    "description": "Your card list is empty for now. Click the button below to begin adding cards!"
-  }
+    "title": "Your Cashback",
+    "description": "The AI Assistant will suggest which cashback to use to maximize your benefits"
+  },
+  "button": "Add"
 }
